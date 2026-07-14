@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>AI 기업 현장에서 배우는 머신비전 기반 스마트 팩토리 실무 — 강의자료</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard",
+                 "Malgun Gothic", "맑은 고딕", "Noto Sans KR", sans-serif;
+    color: #0f1222;
+    background: #f5f6fa;
+    word-break: keep-all;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  /* ---------- Hero (강의 표지 톤) ---------- */
+  .hero {
+    background: linear-gradient(110deg, #1a4bff 0%, #3a3ff0 45%, #5a2fd8 100%);
+    color: #fff;
+    padding: clamp(56px, 9vw, 108px) clamp(24px, 6vw, 88px) clamp(64px, 10vw, 116px);
+  }
+  .eyebrow {
+    font-size: clamp(11px, 1.4vw, 14px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 clamp(20px, 3vw, 34px);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(28px, 5.2vw, 58px);
+    line-height: 1.28;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .rule {
+    width: 92px; height: 3px; background: rgba(255,255,255,0.85);
+    margin: clamp(28px, 4vw, 44px) 0 clamp(36px, 6vw, 72px);
+  }
+  .lede {
+    margin: 0;
+    font-size: clamp(14px, 1.7vw, 19px);
+    color: rgba(255,255,255,0.92);
+    max-width: 62ch;
+  }
+
+  /* ---------- Content ---------- */
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(36px, 6vw, 64px) clamp(20px, 5vw, 32px) 80px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #e4e6ef;
+    border-radius: 18px;
+    padding: clamp(24px, 4vw, 40px);
+    box-shadow: 0 1px 2px rgba(16,24,64,0.04), 0 12px 32px rgba(16,24,64,0.06);
+  }
+  .card + .card { margin-top: 24px; }
+
+  .card h2 {
+    margin: 0 0 6px;
+    font-size: clamp(18px, 2.4vw, 24px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .card .sub { margin: 0 0 26px; color: #5c6076; font-size: 15px; }
+
+  .dl {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: #12142a; color: #fff;
+    text-decoration: none;
+    font-weight: 700; font-size: clamp(15px, 1.9vw, 18px);
+    padding: 18px 30px; border-radius: 12px;
+    transition: transform .12s ease, background .12s ease;
+  }
+  .dl:hover { background: #2b2fd6; transform: translateY(-1px); }
+  .dl svg { flex: none; }
+  .meta { margin-top: 14px; color: #7a7f95; font-size: 14px; }
+  .meta code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+    font-size: 13px; background: #f1f2f7; padding: 2px 6px; border-radius: 5px;
+  }
+
+  ul.files { list-style: none; margin: 0; padding: 0; }
+  ul.files li {
+    display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+    padding: 14px 0; border-top: 1px solid #eceef4;
+    font-size: 15px;
+  }
+  ul.files li:first-child { border-top: 0; }
+  ul.files .n { font-weight: 600; }
+  ul.files .s { color: #8b8fa3; font-size: 13px; white-space: nowrap; }
+
+  ol.steps { margin: 0; padding-left: 20px; }
+  ol.steps li { margin-bottom: 12px; }
+  ol.steps li:last-child { margin-bottom: 0; }
+
+  .note {
+    margin-top: 22px; padding: 16px 18px;
+    background: #f4f7ff; border: 1px solid #dfe6ff; border-radius: 12px;
+    font-size: 14px; color: #35406b;
+  }
+  .note b { color: #1a2a66; }
+
+  footer {
+    text-align: center; color: #9095a8; font-size: 13px;
+    padding: 0 20px 56px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body { background: #0d0e16; color: #e9eaf2; }
+    .card { background: #16182a; border-color: #262a44; box-shadow: none; }
+    .card .sub { color: #9ea3bd; }
+    ul.files li { border-color: #262a44; }
+    ul.files .s { color: #7a8099; }
+    .meta { color: #8b90a8; }
+    .meta code { background: #1e2138; }
+    .dl { background: #3a3ff0; }
+    .dl:hover { background: #5257ff; }
+    .note { background: #171b33; border-color: #2b3260; color: #c3cbee; }
+    .note b { color: #e3e8ff; }
+    footer { color: #6d7291; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">Smart Factory · Machine Vision</p>
+  <h1>AI 기업 현장에서 배우는 머신비전 기반<br />스마트 팩토리 실무</h1>
+  <div class="rule"></div>
+  <p class="lede">기계 트랙 · 직업계고 기계·공학 계열 교원 대상 &nbsp;|&nbsp; 노코딩(Claude Pro · 마우스 클릭)으로 배우는 제조 AI</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>실습 자료 다운로드</h2>
+    <p class="sub">아래 버튼을 눌러 실습에 사용할 이미지 데이터셋을 내려받으세요.</p>
+
+    <a class="dl" href="https://github.com/jeromwolf/machinevision-2026/releases/download/v1/MachineVision.zip">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 2.5v10m0 0 3.75-3.75M10 12.5 6.25 8.75M3.75 14.5v1.25a1.5 1.5 0 0 0 1.5 1.5h9.5a1.5 1.5 0 0 0 1.5-1.5V14.5"
+              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      MachineVision.zip 내려받기
+    </a>
+
+    <p class="meta">약 <b>204MB</b> · 이미지 9,617개 · 압축 해제 시 약 345MB · <code>Windows · macOS 공통</code></p>
+  </section>
+
+  <section class="card">
+    <h2>자료 구성</h2>
+    <p class="sub">압축을 풀면 아래 4개 폴더가 나옵니다. 원본과 증강(augmentation) 데이터가 짝을 이룹니다.</p>
+    <ul class="files">
+      <li><span class="n">소스자료</span><span class="s">실습 소스 · 이미지</span></li>
+      <li><span class="n">머신비전_스마트팩토링_두부</span><span class="s">두부 · 원본</span></li>
+      <li><span class="n">머신비전_스마트팩토링_두부_증강</span><span class="s">두부 · 증강</span></li>
+      <li><span class="n">머신비전_스마트팩토링_다이캐스팅_증강</span><span class="s">다이캐스팅 · 증강</span></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>내려받은 뒤에</h2>
+    <ol class="steps">
+      <li><b>Windows</b> — 파일을 마우스 오른쪽 클릭 → <b>「압축 풀기」</b>(또는 반디집·알집). 바탕화면처럼 찾기 쉬운 곳에 푸세요.</li>
+      <li><b>macOS</b> — 파일을 더블클릭하면 같은 위치에 폴더가 생깁니다.</li>
+      <li>압축을 푼 <b>폴더 전체</b>를 실습 때 그대로 사용합니다. 파일 이름·폴더 구조는 바꾸지 마세요.</li>
+    </ol>
+    <div class="note">
+      <b>다운로드가 느리거나 멈추면</b> — 파일이 커서 네트워크에 따라 수 분 걸릴 수 있습니다.
+      브라우저에서 중단되면 다운로드를 다시 시작해 주세요. (Chrome 권장)
+    </div>
+  </section>
+</main>
+
+<footer>
+  강의자료 배포 페이지 · 2026.07.15 · 강의 종료 후 삭제됩니다
+</footer>
+
+</body>
+</html>
