@@ -84,6 +84,15 @@
   }
   .dl:hover { background: #2b2fd6; transform: translateY(-1px); }
   .dl svg { flex: none; }
+
+  .dl.alt {
+    background: #fff; color: #12142a;
+    border: 1.5px solid #d5d8e6;
+  }
+  .dl.alt:hover { background: #f4f7ff; border-color: #2b2fd6; color: #2b2fd6; }
+
+  .dl-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
   .meta { margin-top: 14px; color: #7a7f95; font-size: 14px; }
   .meta code {
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
@@ -126,6 +135,8 @@
     .meta code { background: #1e2138; }
     .dl { background: #3a3ff0; }
     .dl:hover { background: #5257ff; }
+    .dl.alt { background: #1e2138; color: #e9eaf2; border-color: #343956; }
+    .dl.alt:hover { background: #262a44; border-color: #5257ff; color: #fff; }
     .note { background: #171b33; border-color: #2b3260; color: #c3cbee; }
     .note b { color: #e3e8ff; }
     footer { color: #6d7291; }
@@ -138,23 +149,38 @@
   <p class="eyebrow">Smart Factory · Machine Vision</p>
   <h1>AI 기업 현장에서 배우는 머신비전 기반<br />스마트 팩토리 실무</h1>
   <div class="rule"></div>
-  <p class="lede">기계 트랙 · 직업계고 기계·공학 계열 교원 대상 &nbsp;|&nbsp; 노코딩(Claude Pro · 마우스 클릭)으로 배우는 제조 AI</p>
+  <p class="lede">기계 트랙 · 직업계고 기계·공학 계열 교원 대상 &nbsp;|&nbsp; 노코딩(마우스 클릭)으로 배우는 제조 AI</p>
 </header>
 
 <main>
   <section class="card">
-    <h2>실습 자료 다운로드</h2>
-    <p class="sub">아래 버튼을 눌러 실습에 사용할 이미지 데이터셋을 내려받으세요.</p>
+    <h2>강의자료 다운로드</h2>
+    <p class="sub">강의 슬라이드(PDF)와 실습에 사용할 이미지 데이터셋을 내려받으세요.</p>
 
-    <a class="dl" href="https://github.com/jeromwolf/machinevision-2026/releases/download/v1/MachineVision.zip">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M10 2.5v10m0 0 3.75-3.75M10 12.5 6.25 8.75M3.75 14.5v1.25a1.5 1.5 0 0 0 1.5 1.5h9.5a1.5 1.5 0 0 0 1.5-1.5V14.5"
-              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      MachineVision.zip 내려받기
-    </a>
+    <div class="dl-row">
+      <a class="dl" href="https://github.com/jeromwolf/machinevision-2026/releases/download/v1/MachineVision.zip">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M10 2.5v10m0 0 3.75-3.75M10 12.5 6.25 8.75M3.75 14.5v1.25a1.5 1.5 0 0 0 1.5 1.5h9.5a1.5 1.5 0 0 0 1.5-1.5V14.5"
+                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        실습 데이터 (ZIP)
+      </a>
 
-    <p class="meta">약 <b>204MB</b> · 이미지 9,617개 · 압축 해제 시 약 345MB · <code>Windows · macOS 공통</code></p>
+      <a class="dl alt"
+         href="MachineVision-SmartFactory-Slides.pdf"
+         download="AI기업 현장에서 배우는 머신비전기반 스마트 팩토리 실무_양선희.pdf">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M10 2.5v10m0 0 3.75-3.75M10 12.5 6.25 8.75M3.75 14.5v1.25a1.5 1.5 0 0 0 1.5 1.5h9.5a1.5 1.5 0 0 0 1.5-1.5V14.5"
+                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        강의 슬라이드 (PDF)
+      </a>
+    </div>
+
+    <p class="meta">
+      ZIP 약 <b>204MB</b> · 이미지 9,617개 · 압축 해제 시 약 345MB<br />
+      PDF 약 <b>7MB</b> · <code>Windows · macOS 공통</code>
+    </p>
   </section>
 
   <section class="card">
